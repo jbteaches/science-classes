@@ -15,10 +15,11 @@
     --muted:   #6b7a9c;
     --accent:  #f59e0b;
 
-    /* ── 5 unique class colors ── */
+    /* ── 6 unique class colors ── */
     --c-p2: #22d3ee;   /* cyan      – Physics Resource  P2 */
     --c-p3: #f472b6;   /* pink      – LLD Physics       P3 */
     --c-p4: #a78bfa;   /* violet    – Chem Resource     P4 */
+    --c-p5: #f43f5e;   /* rose-red  – Chem CP ICS       P5 */
     --c-p7: #fb923c;   /* orange    – LLD Chemistry     P7 */
     --c-p8: #4ade80;   /* green     – Chem Resource     P8 */
   }
@@ -90,6 +91,7 @@
   .tab-btn[data-cls="p2"].active { border-color:var(--c-p2); }
   .tab-btn[data-cls="p3"].active { border-color:var(--c-p3); }
   .tab-btn[data-cls="p4"].active { border-color:var(--c-p4); }
+  .tab-btn[data-cls="p5"].active { border-color:var(--c-p5); }
   .tab-btn[data-cls="p7"].active { border-color:var(--c-p7); }
   .tab-btn[data-cls="p8"].active { border-color:var(--c-p8); }
 
@@ -98,6 +100,7 @@
   .tab-btn[data-cls="p2"] .tab-symbol { color:var(--c-p2); }
   .tab-btn[data-cls="p3"] .tab-symbol { color:var(--c-p3); }
   .tab-btn[data-cls="p4"] .tab-symbol { color:var(--c-p4); }
+  .tab-btn[data-cls="p5"] .tab-symbol { color:var(--c-p5); }
   .tab-btn[data-cls="p7"] .tab-symbol { color:var(--c-p7); }
   .tab-btn[data-cls="p8"] .tab-symbol { color:var(--c-p8); }
   .tab-name { font-size:.68rem; color:var(--muted); }
@@ -263,6 +266,11 @@
     <span class="tab-symbol">Ch</span>
     <span class="tab-name">Chem Resource</span>
   </button>
+  <button class="tab-btn" data-cls="p5" onclick="switchTab('p5',this)">
+    <span class="tab-period-label">Period 5</span>
+    <span class="tab-symbol">Ch</span>
+    <span class="tab-name">Chem CP ICS</span>
+  </button>
   <button class="tab-btn" data-cls="p7" onclick="switchTab('p7',this)">
     <span class="tab-period-label">Period 7</span>
     <span class="tab-symbol">Ch</span>
@@ -406,6 +414,40 @@
 </div>
 
 <!-- ═══════════════════════════════════════
+     PERIOD 5 · Chemistry CP ICS · ROSE-RED
+═══════════════════════════════════════ -->
+<div class="class-panel" id="panel-p5">
+  <div class="class-hero">
+    <div class="element-card" style="color:var(--c-p5)">
+      <span class="at-num" style="color:var(--c-p5)">5</span>
+      <span class="el-sym" style="color:var(--c-p5)">Ch</span>
+      <span class="el-name" style="color:var(--c-p5)">Chemistry</span>
+      <span class="el-mass" style="color:var(--c-p5)">10.81</span>
+    </div>
+    <div class="class-info">
+      <h2 style="color:var(--c-p5)">Chemistry CP ICS</h2>
+      <div class="meta">Period 5 · Room 201</div>
+      <div class="tags" style="margin-top:.5rem">
+        <span class="tag" style="background:#2a0a10;color:var(--c-p5)">CP ICS</span>
+        <span class="tag tag-lab">Full Class</span>
+      </div>
+    </div>
+  </div>
+  <div class="legend">
+    <span class="legend-item"><span class="tag tag-hw">HW</span> Homework</span>
+    <span class="legend-item"><span class="tag tag-test">TEST</span> Test/Exam</span>
+    <span class="legend-item"><span class="tag tag-quiz">QUIZ</span> Quiz</span>
+    <span class="legend-item"><span class="tag tag-lab">LAB</span> Lab Day</span>
+  </div>
+  <div class="week-grid" id="grid-p5"></div>
+  <div class="notes-section">
+    <h3>🧪 Teacher Notes</h3>
+    <div class="notes-content" id="notes-p5" contenteditable="false">Add any important notes for parents here.</div>
+  </div>
+  <button class="save-btn" onclick="saveNotes('p5')">Save Notes</button>
+</div>
+
+<!-- ═══════════════════════════════════════
      PERIOD 7 · LLD Chemistry · ORANGE
 ═══════════════════════════════════════ -->
 <div class="class-panel" id="panel-p7">
@@ -498,7 +540,7 @@
 
 // ── WEEK ──
 const DAYS=['Monday','Tuesday','Wednesday','Thursday','Friday'];
-const CLASSES=['p2','p3','p4','p7','p8'];
+const CLASSES=['p2','p3','p4','p5','p7','p8'];
 let currentWeekStart=getThisMonday(new Date());
 
 function getThisMonday(d){
