@@ -731,6 +731,13 @@ function saveNotes(cls){
 // ── EDIT MODE ──
 let isEditMode = false;
 function toggleEdit(){
+  if(!isEditMode){
+    const pw = prompt('Enter teacher password:');
+    if(pw !== '4ppl3') {
+      alert('Incorrect password.');
+      return;
+    }
+  }
   isEditMode = !isEditMode;
   document.body.classList.toggle('edit-mode', isEditMode);
   document.getElementById('editBtn').textContent = isEditMode ? '👁 View Mode' : '✏️ Edit Mode';
