@@ -221,6 +221,33 @@
   }
   .edit-mode .save-btn { display:inline-block; }
 
+  /* ── FOLDER LINK ── */
+  .folder-section {
+    display:flex; align-items:center; gap:1rem;
+    background:var(--surface); border:1px solid var(--border);
+    border-radius:10px; padding:1rem 1.25rem; margin-top:1rem;
+  }
+  .folder-icon { font-size:1.5rem; flex-shrink:0; }
+  .folder-label {
+    font-family:'Space Mono',monospace; font-size:.65rem;
+    letter-spacing:.15em; text-transform:uppercase; color:var(--muted); margin-bottom:.3rem;
+  }
+  .folder-link-display a {
+    font-size:.9rem; font-weight:600; text-decoration:none;
+    transition:opacity .15s;
+  }
+  .folder-link-display a:hover { opacity:.75; text-decoration:underline; }
+  .folder-link-display .no-link { font-size:.85rem; color:var(--muted); font-style:italic; }
+  .folder-link-input {
+    display:none; width:100%; background:#0f1520;
+    border:1px dashed var(--border); border-radius:6px;
+    padding:.4rem .6rem; color:var(--text);
+    font-family:'Space Grotesk',sans-serif; font-size:.85rem; outline:none;
+  }
+  .folder-link-input:focus { border-color:var(--accent); }
+  .edit-mode .folder-link-display { display:none; }
+  .edit-mode .folder-link-input  { display:block; }
+
   /* ── FOOTER ── */
   footer {
     position:relative; z-index:10; text-align:center;
@@ -325,6 +352,14 @@
     <span class="legend-item"><span class="tag tag-lab">LAB</span> Lab Day</span>
   </div>
   <div class="week-grid" id="grid-p2"></div>
+  <div class="folder-section">
+    <div class="folder-icon">📁</div>
+    <div style="flex:1">
+      <div class="folder-label">Class Folder</div>
+      <div class="folder-link-display" id="folder-display-p2"><span class="no-link">No folder link set yet</span></div>
+      <input class="folder-link-input" id="folder-input-p2" type="url" placeholder="Paste Google Drive or folder URL here…" oninput="saveFolderLink('p2',this.value)"/>
+    </div>
+  </div>
   <div class="notes-section">
     <h3>⚡ Teacher Notes</h3>
     <div class="notes-content" id="notes-p2" contenteditable="false">Add any important notes for parents here — upcoming field trips, supply needs, reminders, etc.</div>
@@ -371,6 +406,14 @@
     <span class="legend-item"><span class="tag tag-lab">LAB</span> Lab Day</span>
   </div>
   <div class="week-grid" id="grid-p3"></div>
+  <div class="folder-section">
+    <div class="folder-icon">📁</div>
+    <div style="flex:1">
+      <div class="folder-label">Class Folder</div>
+      <div class="folder-link-display" id="folder-display-p3"><span class="no-link">No folder link set yet</span></div>
+      <input class="folder-link-input" id="folder-input-p3" type="url" placeholder="Paste Google Drive or folder URL here…" oninput="saveFolderLink('p3',this.value)"/>
+    </div>
+  </div>
   <div class="notes-section">
     <h3>⚡ Teacher Notes</h3>
     <div class="notes-content" id="notes-p3" contenteditable="false">Add any important notes for parents here.</div>
@@ -406,6 +449,14 @@
     <span class="legend-item"><span class="tag tag-lab">LAB</span> Lab Day</span>
   </div>
   <div class="week-grid" id="grid-p4"></div>
+  <div class="folder-section">
+    <div class="folder-icon">📁</div>
+    <div style="flex:1">
+      <div class="folder-label">Class Folder</div>
+      <div class="folder-link-display" id="folder-display-p4"><span class="no-link">No folder link set yet</span></div>
+      <input class="folder-link-input" id="folder-input-p4" type="url" placeholder="Paste Google Drive or folder URL here…" oninput="saveFolderLink('p4',this.value)"/>
+    </div>
+  </div>
   <div class="notes-section">
     <h3>🧪 Teacher Notes</h3>
     <div class="notes-content" id="notes-p4" contenteditable="false">Add any important notes for parents here.</div>
@@ -440,6 +491,14 @@
     <span class="legend-item"><span class="tag tag-lab">LAB</span> Lab Day</span>
   </div>
   <div class="week-grid" id="grid-p5"></div>
+  <div class="folder-section">
+    <div class="folder-icon">📁</div>
+    <div style="flex:1">
+      <div class="folder-label">Class Folder</div>
+      <div class="folder-link-display" id="folder-display-p5"><span class="no-link">No folder link set yet</span></div>
+      <input class="folder-link-input" id="folder-input-p5" type="url" placeholder="Paste Google Drive or folder URL here…" oninput="saveFolderLink('p5',this.value)"/>
+    </div>
+  </div>
   <div class="notes-section">
     <h3>🧪 Teacher Notes</h3>
     <div class="notes-content" id="notes-p5" contenteditable="false">Add any important notes for parents here.</div>
@@ -475,6 +534,14 @@
     <span class="legend-item"><span class="tag tag-lab">LAB</span> Lab Day</span>
   </div>
   <div class="week-grid" id="grid-p7"></div>
+  <div class="folder-section">
+    <div class="folder-icon">📁</div>
+    <div style="flex:1">
+      <div class="folder-label">Class Folder</div>
+      <div class="folder-link-display" id="folder-display-p7"><span class="no-link">No folder link set yet</span></div>
+      <input class="folder-link-input" id="folder-input-p7" type="url" placeholder="Paste Google Drive or folder URL here…" oninput="saveFolderLink('p7',this.value)"/>
+    </div>
+  </div>
   <div class="notes-section">
     <h3>🧪 Teacher Notes</h3>
     <div class="notes-content" id="notes-p7" contenteditable="false">Add any important notes for parents here.</div>
@@ -510,6 +577,14 @@
     <span class="legend-item"><span class="tag tag-lab">LAB</span> Lab Day</span>
   </div>
   <div class="week-grid" id="grid-p8"></div>
+  <div class="folder-section">
+    <div class="folder-icon">📁</div>
+    <div style="flex:1">
+      <div class="folder-label">Class Folder</div>
+      <div class="folder-link-display" id="folder-display-p8"><span class="no-link">No folder link set yet</span></div>
+      <input class="folder-link-input" id="folder-input-p8" type="url" placeholder="Paste Google Drive or folder URL here…" oninput="saveFolderLink('p8',this.value)"/>
+    </div>
+  </div>
   <div class="notes-section">
     <h3>🧪 Teacher Notes</h3>
     <div class="notes-content" id="notes-p8" contenteditable="false">Add any important notes for parents here.</div>
@@ -560,6 +635,31 @@ function changeWeek(dir){
   updateWeekDisplay(); renderAllGrids(); loadAllNotes();
 }
 function jumpToToday(){ currentWeekStart=getThisMonday(new Date()); updateWeekDisplay(); renderAllGrids(); loadAllNotes(); }
+
+// ── FOLDER LINKS (permanent, not week-specific) ──
+const CLASS_COLORS = { p2:'#22d3ee', p3:'#f472b6', p4:'#a78bfa', p5:'#f43f5e', p7:'#fb923c', p8:'#4ade80' };
+function folderKey(cls){ return `sci_folder_${cls}`; }
+function saveFolderLink(cls,val){
+  localStorage.setItem(folderKey(cls), val.trim());
+  renderFolderDisplay(cls, val.trim());
+}
+function renderFolderDisplay(cls, url){
+  const disp = document.getElementById(`folder-display-${cls}`);
+  if(!disp) return;
+  if(url){
+    disp.innerHTML = `<a href="${url}" target="_blank" rel="noopener" style="color:${CLASS_COLORS[cls]}">📂 Open Class Folder</a>`;
+  } else {
+    disp.innerHTML = `<span class="no-link">No folder link set yet</span>`;
+  }
+}
+function loadAllFolderLinks(){
+  CLASSES.forEach(cls=>{
+    const url = localStorage.getItem(folderKey(cls)) || '';
+    renderFolderDisplay(cls, url);
+    const inp = document.getElementById(`folder-input-${cls}`);
+    if(inp) inp.value = url;
+  });
+}
 
 // ── STORAGE ──
 function storageKey(cls,day){ return `sci_${cls}_${weekKey(currentWeekStart)}_${day}`; }
@@ -631,7 +731,7 @@ function showToast(msg){
 }
 
 // ── INIT ──
-updateWeekDisplay(); renderAllGrids(); loadAllNotes();
+updateWeekDisplay(); renderAllGrids(); loadAllNotes(); loadAllFolderLinks();
 </script>
 </body>
 </html>
